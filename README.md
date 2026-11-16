@@ -44,9 +44,3 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ---
 
-## របៀបប្រើជាមួយ GitHub និង Vercel (ជាភាសាខ្មែរ)
-
-1. ទាញយក (Download) និងពន្លា (Unzip) កញ្ចប់កូដនេះទុកលើកុំព្យូទ័រ។
-2. បង្កើត Repository ថ្មីមួយនៅលើ **GitHub** រួច Push កូដទាំងអស់ឡើងទៅ GitHub។
-3. ចូលទៅ **Vercel** → ចុច **Add New Project** → ភ្ជាប់ GitHub Repository របស់អ្នក (Vercel នឹងស្គាល់ `vercel.json` ដោយស្វ័យប្រវត្តិ) → ចុច **Deploy**។
-4. *(បន្ថែម)* បើអ្នកចង់ប្រើសំឡេង Gemini 3.8 TTS សូមបញ្ចូល `GEMINI_API_KEY` នៅក្នុង **Environment Variables** របស់ Vercel (បើទោះបីជាមិនដាក់ Key ក៏ប្រព័ន្ធសំឡេងខ្មែរ/អង់គ្លេសបម្រុងនៅតែដំណើរការជាធម្មតា)។
