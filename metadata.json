@@ -1,0 +1,6 @@
+{
+  "name": "Bivariate Analysis Looker Studio Blueprint (EN/KH)",
+  "description": "41-Page Bilingual (English & Khmer) Google Looker Studio Design Blueprint and Interactive BI Presentation Studio for Exploratory Data Analysis & Bivariate Analysis.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

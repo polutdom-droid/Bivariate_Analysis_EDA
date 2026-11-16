@@ -1,0 +1,371 @@
+@import "tailwindcss";
+@import "katex/dist/katex.min.css";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', 'Kantumruy Pro', sans-serif;
+    overflow-x: hidden;
+  }
+
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+.khmer-text {
+  font-family: 'Kantumruy Pro', 'Plus Jakarta Sans', sans-serif;
+  line-height: 1.9;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+.katex-display {
+  margin: 0.25em 0 !important;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.2rem 0;
+  max-width: 100%;
+}
+
+.katex {
+  font-size: 1.04em;
+  line-height: 1.4;
+}
+
+/* ============================================================================
+   LOOKER STUDIO CHART ANIMATIONS (SVG Bars, Curves, Bubbles & Data Transitions)
+   ============================================================================ */
+
+@keyframes chartFadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes svgBarGrowY {
+  0% {
+    transform: scaleY(0);
+    opacity: 0.2;
+  }
+  100% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+@keyframes svgBarGrowX {
+  0% {
+    transform: scaleX(0);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+@keyframes svgBubblePop {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  70% {
+    transform: scale(1.14);
+    opacity: 0.95;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes svgLineDraw {
+  0% {
+    stroke-dashoffset: 650;
+    opacity: 0.35;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes svgPulseHalo {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.75;
+  }
+  50% {
+    transform: scale(1.38);
+    opacity: 0.15;
+  }
+}
+
+@keyframes boxWhiskerReveal {
+  0% {
+    opacity: 0;
+    transform: scaleY(0.35);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+.animate-chart-stage {
+  animation: chartFadeSlideUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.svg-bar-rise {
+  transform-box: fill-box;
+  transform-origin: bottom;
+  animation: svgBarGrowY 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.svg-bar-stretch-x {
+  transform-origin: left center;
+  animation: svgBarGrowX 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.svg-bubble-appear {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: svgBubblePop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  transition: cx 0.48s cubic-bezier(0.22, 1, 0.36, 1),
+              cy 0.48s cubic-bezier(0.22, 1, 0.36, 1),
+              r 0.35s ease,
+              fill 0.3s ease;
+}
+
+.svg-bubble-glider {
+  transition: cx 0.52s cubic-bezier(0.22, 1, 0.36, 1),
+              cy 0.52s cubic-bezier(0.22, 1, 0.36, 1),
+              r 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+              fill 0.3s ease;
+}
+
+.svg-line-draw {
+  stroke-dasharray: 650;
+  animation: svgLineDraw 1.25s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.svg-box-reveal {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: boxWhiskerReveal 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.svg-pulse-ring {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: svgPulseHalo 2.2s ease-in-out infinite;
+}
+
+/* ============================================================================
+   RIGHT WORKSPACE SLIDE-IN-FROM-RIGHT ANIMATIONS (WHEN SELECTING SLIDES 1..41)
+   ============================================================================ */
+
+@keyframes slideInFromRightPrimary {
+  0% {
+    opacity: 0;
+    transform: translate3d(110px, 0, 0) scale(0.98);
+  }
+  70% {
+    opacity: 1;
+    transform: translate3d(-6px, 0, 0) scale(1);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes slideInFromRightStagger {
+  0% {
+    opacity: 0;
+    transform: translate3d(90px, 0, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.animate-pane-slide-right {
+  animation: slideInFromRightPrimary 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+  will-change: transform, opacity;
+}
+
+.animate-section-slide-right {
+  animation: slideInFromRightStagger 0.58s cubic-bezier(0.16, 1, 0.3, 1) both;
+  will-change: transform, opacity;
+}
+
+/* ============================================================================
+   UNIVERSAL PLOTLY & UI TOUCH / HOVER ELASTIC SPRING ANIMATIONS
+   ============================================================================ */
+
+@keyframes touchSonarRing {
+  0% {
+    transform: translate(-50%, -50%) scale(0.2);
+    opacity: 0.95;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(2.8);
+    opacity: 0;
+  }
+}
+
+@keyframes touchPopPulse {
+  0% {
+    scale: 1;
+  }
+  45% {
+    scale: 1.38;
+  }
+  75% {
+    scale: 0.94;
+  }
+  100% {
+    scale: 1.18;
+  }
+}
+
+.animate-touch-sonar {
+  animation: touchSonarRing 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* 1. SVG Scatter Bubbles & Points — Elastic Spring Pop on Touch/Hover */
+.plotly-touch-stage svg circle {
+  transform-box: fill-box;
+  transform-origin: center;
+  cursor: pointer;
+  transition:
+    scale 0.34s cubic-bezier(0.34, 1.56, 0.64, 1),
+    translate 0.34s cubic-bezier(0.34, 1.56, 0.64, 1),
+    filter 0.2s ease,
+    stroke-width 0.2s ease,
+    cx 0.48s cubic-bezier(0.22, 1, 0.36, 1),
+    cy 0.48s cubic-bezier(0.22, 1, 0.36, 1),
+    r 0.35s ease;
+}
+
+.plotly-touch-stage svg circle:hover,
+.plotly-touch-stage svg circle:active,
+.plotly-touch-stage svg g:hover > circle {
+  scale: 1.55;
+  stroke: #FACC15 !important;
+  stroke-width: 2.4px !important;
+  filter: drop-shadow(0 0 12px rgba(250, 204, 21, 0.95)) brightness(1.25);
+}
+
+/* 2. SVG Bars, Histogram Bins & Boxplot Boxes — Elastic Stretch & Lift */
+.plotly-touch-stage svg rect {
+  transform-box: fill-box;
+  transform-origin: bottom center;
+  cursor: pointer;
+  transition:
+    scale 0.34s cubic-bezier(0.34, 1.56, 0.64, 1),
+    translate 0.34s cubic-bezier(0.34, 1.56, 0.64, 1),
+    filter 0.22s ease,
+    stroke-width 0.2s ease;
+}
+
+.plotly-touch-stage svg rect:hover,
+.plotly-touch-stage svg rect:active,
+.plotly-touch-stage svg g:hover > rect {
+  scale: 1.1 1.07;
+  translate: 0 -3px;
+  stroke: #FACC15;
+  stroke-width: 1.8px;
+  filter: drop-shadow(0 0 12px rgba(56, 189, 248, 0.92)) brightness(1.22);
+}
+
+/* 3. SVG Curves, KDE, Violins & Trendlines — Neon Pulse & Lift */
+.plotly-touch-stage svg path,
+.plotly-touch-stage svg polyline {
+  transform-box: fill-box;
+  transform-origin: center;
+  cursor: pointer;
+  transition:
+    scale 0.34s cubic-bezier(0.34, 1.56, 0.64, 1),
+    translate 0.34s cubic-bezier(0.34, 1.56, 0.64, 1),
+    filter 0.22s ease,
+    stroke-width 0.22s ease;
+}
+
+.plotly-touch-stage svg path:hover,
+.plotly-touch-stage svg path:active,
+.plotly-touch-stage svg polyline:hover,
+.plotly-touch-stage svg polyline:active {
+  scale: 1.035;
+  translate: 0 -2px;
+  stroke-width: 3.6px;
+  filter: drop-shadow(0 0 12px rgba(56, 189, 248, 0.95)) brightness(1.25);
+}
+
+/* 4. Interactive HTML Chart Segments, Stacked Bars & Treemap Tiles */
+.plotly-touch-stage [data-plotly-label] {
+  cursor: pointer;
+  transition:
+    scale 0.32s cubic-bezier(0.34, 1.56, 0.64, 1),
+    translate 0.32s cubic-bezier(0.34, 1.56, 0.64, 1),
+    filter 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.plotly-touch-stage div[data-plotly-label]:hover,
+.plotly-touch-stage div[data-plotly-label]:active {
+  scale: 1.045;
+  translate: 0 -3px;
+  z-index: 10;
+  filter: drop-shadow(0 6px 14px rgba(14, 165, 233, 0.45)) brightness(1.16);
+}
+
+/* 5. Interactive Statistical Table Rows (Gapminder, Correlation Matrix, Contingency Table) */
+.plotly-touch-stage tbody tr {
+  cursor: pointer;
+  transition:
+    translate 0.26s cubic-bezier(0.34, 1.56, 0.64, 1),
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.plotly-touch-stage tbody tr:hover,
+.plotly-touch-stage tbody tr:active {
+  translate: 4px 0;
+  background-color: rgba(14, 165, 233, 0.18) !important;
+  box-shadow: inset 3px 0 0 #FACC15;
+}
+
+/* 6. Universal Touch-Bounce Cards (Scorecards, Formula Variable Cards, Blueprint Cards) */
+.touch-spring-card {
+  transition:
+    scale 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+    translate 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+    border-color 0.22s ease,
+    box-shadow 0.22s ease;
+}
+
+.touch-spring-card:hover {
+  translate: 0 -3px;
+  scale: 1.015;
+  border-color: rgba(56, 189, 248, 0.65) !important;
+  box-shadow: 0 10px 26px -6px rgba(14, 165, 233, 0.28), 0 0 12px rgba(250, 204, 21, 0.12);
+}
+
+.touch-spring-card:active {
+  scale: 0.985;
+  translate: 0 0;
+}
+
